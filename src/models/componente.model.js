@@ -1,15 +1,14 @@
-"use strict";
-const { Model } = require("sequelize");
+'use strict';
+const { Model } = require('sequelize');
 
 function componente(sequelize, DataTypes) {
   class Componente extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
     static associate(models) {
-      // define association here
+      Componente.belongsToMany(models.Producto, {
+        through: 'ProductoComponente',
+        foreignKey: 'componenteId',
+        as: 'productos',
+      });
     }
   }
 
@@ -17,10 +16,11 @@ function componente(sequelize, DataTypes) {
     {
       nombre: DataTypes.STRING,
       descripcion: DataTypes.STRING,
+      pathImg: DataTypes.STRING,
     },
     {
       sequelize,
-      modelName: "Componente",
+      modelName: 'Componente',
     }
   );
 
@@ -28,3 +28,4 @@ function componente(sequelize, DataTypes) {
 }
 
 module.exports = componente;
+

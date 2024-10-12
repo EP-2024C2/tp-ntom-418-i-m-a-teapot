@@ -9,7 +9,11 @@ function fabricante(sequelize, DataTypes) {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      // Relación 1:N con Producto
+      Fabricante.hasMany(models.Producto, {
+        foreignKey: 'fabricanteId',
+        as: 'productos', // Alias para la relación
+      });
     }
   }
 
