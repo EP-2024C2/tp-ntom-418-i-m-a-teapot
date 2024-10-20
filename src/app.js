@@ -5,6 +5,16 @@ const { sequelize } = require("./models");
 
 const app = express();
 
+// Sincronizar con la base de datos
+sequelize
+  .sync()
+  .then(() => {
+    console.log("Conectado a la base de datos");
+  })
+  .catch((err) => {
+    console.error("Error conectando a la base de datos: ", err);
+  });
+
 app.use(express.json());
 app.use("/productos", router.productosRoute);
 app.use("/fabricantes", router.fabricantesRoute);

@@ -5,6 +5,7 @@ const { fabricanteSchema } = require("../schemas");
 const { Fabricante } = require("../models");
 const route = Router();
 
+// Obtener todos los fabricantes
 route.get("/", FabricanteController.getAll);
 
 route.get(
