@@ -5,7 +5,6 @@ const { schemaValidator, validateId } = require("../middlewares");
 const { componenteSchema } = require("../schemas");
 const { Componente } = require("../models");
 
-// Obtener todos los componentes
 route.get("/", ComponenteController.getAll);
 
 route.get(
