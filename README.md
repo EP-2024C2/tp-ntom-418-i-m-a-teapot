@@ -1,27 +1,16 @@
 [![Review Assignment Due Date](https://classroom.github.com/assets/deadline-readme-button-22041afd0340ce965d47ae6ef1cefeee28c7c493a6346c4f15d667ab976d596c.svg)](https://classroom.github.com/a/NoutYWiV)
 # Estrategias de Persistencia - TP 2024
 
-Este trabajo práctico tiene como objetivo principal que los alumnos adquieran experiencia práctica en la implementación de asociaciones 1 a N y N a M en el contexto de una API REST utilizando un ORM (Object-relational mapping).
-
-- Asociaciones 1 a N y N a M:
-Las asociaciones 1 a N y N a M son conceptos fundamentales en el diseño de bases de datos relacionales. En una asociación 1 a N, un registro de una tabla está asociado con uno o más registros de otra tabla. Por otro lado, en una asociación N a M, varios registros de una tabla están asociados con varios registros de otra tabla a través de una tabla de unión intermedia.
-
-- API REST:
-Una API REST (Representational State Transfer) es un conjunto de reglas y convenciones para la creación de servicios web que permiten la comunicación entre sistemas. En este trabajo práctico, utilizaremos una API REST para exponer recursos y permitir operaciones CRUD (Create, Read, Update, Delete) sobre estos recursos.
-
-- Enfoque Práctico:
-Los alumnos implementarán las asociaciones mencionadas anteriormente en el contexto de una API REST utilizando un ORM específico,Sequelize. Se espera que los alumnos comprendan cómo definir modelos, establecer relaciones entre ellos y utilizar las capacidades del ORM para interactuar con la base de datos.
-
-- Criterios de Evaluación:
-Se evaluará la precisión y completitud en la implementación de las asociaciones en la API REST, así como la funcionalidad completa del CRUD para los recursos expuestos por la API.
 
 ## Descripción del Proyecto
 
-Han sido contratados/as por una empresa de manufactura para desarrollar un sistema interno de gestión de productos. La empresa fabrica una amplia gama de productos tecnológicos que requieren componentes específicos y son producidos por múltiples fabricantes asociados. Actualmente, el proceso de gestión de esta información es manual y está descentralizado, lo que genera demoras y problemas en la producción. La empresa busca automatizar y centralizar estos datos mediante un sistema web eficiente que permita gestionar los productos, fabricantes y componentes de manera integrada.
+Se ha desarrollado un sistema interno de gestión de productos para una empresa de manufactura. La empresa fabrica una amplia gama de productos tecnológicos que requieren componentes específicos y son producidos por múltiples fabricantes asociados.
+La problemática de la empresa por la que se decidió hacer este sistema es que el proceso de gestión de la información es manual y está descentralizado, lo que genera demoras y problemas en la producción. 
+Se decidió automatizar y centralizar estos datos mediante un sistema web eficiente que permita gestionar los productos, fabricantes y componentes de manera integrada.
 
-## Modelo Relacional a implementar
 
-Basandose en el siguiente diagrama de entidad-relacion (DER) deberán generar los modelos y la asociaciones en Sequelize para que la API pueda interacturar con la base de datos a través de los Modelos.
+## Información de la API a implementar
+Se decidió implementar un modelo relacional y se utilizó el siguiente diagrama de entidad-relación (DER) para generar los modelos y las asociaciones en Sequelize para que la API pueda interactuar con la base de datos a través de los Modelos.
 
 ![DER](DER.png)
 
@@ -29,57 +18,133 @@ Basandose en el siguiente diagrama de entidad-relacion (DER) deberán generar lo
 - Un **Producto** puede tener muchos fabricantes, y un **Fabricante** puede fabricar muchos productos.
 - Un **Producto** puede tener muchos componentes, y un **Componente** puede formar parte de varios productos.
 
+
 ### Base de datos
-El motor de base de datos a utilizar podra ser elegido por los alumnos. La recomendacion es utilizar sqlite para pruebas simple y luego probar con otro motor de base de datos tipo MySql o Postgres.
-
-### Intalacion de dependencias
-Debera contar con las dependencias de produccion y desarrollo necesarias de un proyecto node. Por ejemplo:
-
-```npm i sequelize sqlite3```
-
-```npm i -D sequelize-cli``` 
-
-### Tips - Comandos utililes
-- Inicializar un proyecto sequelize 
-
-```npx sequelize-cli init```
-- Generar un modelos simple
+El sistema utiliza el motor de base de datos sqlite para realizar pruebas simples pero se pueden utilizar otros motores como MySql o Postgres.
 
 
-```npx sequelize-cli model:generate --name Carrera --attributes "nombre:string,grado:string,universidad:string"```
+### Instrucciones necesarias para correr la API.
+Instalar las dependencias utilizadas en la API. 
+Para esto hay que utilizar el comando: ```npm install```
+Esto instalará las dependencias: ``` express - joi - sequelize - sqlite3 ```
+Y luego utilizar el comando: ```npm start``` 
+
+
 
 ## API
-Implementar la API utilizando el framework express en el entorde de ejecucion de un poryecto NodeJs. Organizar el código en rutas, controlers y middleware utilizando la separación por recurso. A continuación se detallan los endpoinds que deberán estar disponbiles en la API.
+
+#### Organización del código:
+- El código está organizado en rutas, controllers y middleware utilizando la separación por recurso.
 
 
-|Verbo|Recurso|Status code|Descripción|
-|-----|-------|-----------|-----------|
-| GET   | /productos | 200 | Obtener todos los productos |
-| GET   | /productos/:id | 200, 404 | Obtener un producto en particular |
-| POST  | /productos | 201, 400 | Crear un producto |
-| PUT   | /productos/:id | 200, 404 | Modificar los datos de un producto en particular |
-| DELETE| /productos/:id | 200, 404, 500 | Borrar un producto en particular |
-| POST  | /productos/:id/fabricantes | 201, 404, 400 | Crear la asociación de producto con 1 o N fabricantes |
-| GET   | /productos/:id/fabricantes | 200, 404 | Obtener todos los fabricantes de un producto |
-| POST  | /productos/:id/componentes | 201, 404, 400 | Crear la asociación de producto con 1 o N componentes |
-| GET   | /productos/:id/componentes | 200, 404 | Obtener todos los componentes de un producto |
-| GET   | /fabricantes | 200 | Obtener todos los fabricantes |
-| GET   | /fabricantes/:id | 200, 404 | Obtener un fabricante en particular |
-| POST  | /fabricantes | 201, 400 | Crear un fabricante |
-| PUT   | /fabricantes/:id | 200, 404 | Modificar los datos de un fabricante en particular |
-| DELETE| /fabricantes/:id | 200, 404, 500 | Borrar un fabricante en particular |
-| GET   | /fabricantes/:id/productos | 200, 404 | Obtener todos los productos de un fabricante |
-| GET   | /componentes | 200 | Obtener todos los componentes |
-| GET   | /componentes/:id | 200, 404 | Obtener un componente en particular |
-| POST  | /componentes | 201, 400 | Crear un componente |
-| PUT   | /componentes/:id | 200, 404 | Modificar los datos de un componente en particular |
-| DELETE| /componentes/:id | 200, 404, 500 | Borrar un componente en particular |
-| GET   | /componentes/:id/productos | 200, 404 | Obtener todos los productos de un componente |
+### EndPoints
+- Todas las peticiones que se realicen a la API deben ser enviadas en **localHost** con el **puerto 3000** que se encuentra por defecto, o modificarlo por variable de entorno.
 
-## Ejemplos
-A modo de ejemplo se muestra el resultado de algunas respuesta de los endpoind detallado en la tabla de la sección anterior.
+Ejemplos de cada recurso de la API con las diferentes respuestas:
 
-Recurso:  **_/fabricantes/1/productos_**
+**Verbo:** GET 
+**Recurso:** /productos
+**Status code:** 200
+**Descripción:** Obtiene todos los productos, en caso de que no haya productos no devuelve nada. ??????????
+**Ejemplo:** 
+
+
+**Verbo:** GET 
+**Recurso:** /productos/:id
+**Status code:** 200 y 404
+**Descripción:** Obtiene el producto identificado con el id que se le pase en el recurso, en caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
+**Ejemplo:** 
+
+
+**Verbo:** POST 
+**Recurso:** /productos
+**Status code:** 201 y 400
+**Descripción:** Crea un producto, en caso de pasar mal algun dato..... ??????????
+**Ejemplo:**
+
+
+**Verbo:** PUT
+**Recurso:** /productos/:id
+**Status code:** 200 y 404
+**Descripción:** Modifica los datos de el producto identificado con el id que se le pase en el recurso, en caso de que ese producto no se encuentre O se pase mal un dato... devuelve un mensaje de error. ?????
+**Ejemplo:** 
+
+
+**Verbo:** DELETE
+**Recurso:** /productos/:id
+**Status code:** 200, 404 y 500
+**Descripción:** Borra el producto que identificado con el id que se le pase en el recurso, en caso de que ese producto no se encuentre devuelve un mensaje de error. ?????
+**Ejemplo:** 
+
+
+**Verbo:** POST 
+**Recurso:** /productos/:id/fabricantes
+**Status code:** 201, 404 y 400
+**Descripción:** Crea la asociación del producto identificado con el id que se le pase en el recurso con 1 o N fabricantes. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
+**Ejemplo:** 
+
+
+**Verbo:** GET 
+**Recurso:** /productos/:id/fabricantes
+**Status code:** 200 y 404
+**Descripción:** Obtiene todos los fabricantes de el producto identificado con el id que se le pase en el recurso. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
+**Ejemplo:**
+
+
+**Verbo:** POST 
+**Recurso:** /productos/:id/componentes
+**Status code:** 201, 404 y 400
+**Descripción:** Crea la asociación del producto identificado con el id que se le pase en el recurso, con 1 o N componentes. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
+**Ejemplo:** 
+
+**Verbo:** GET 
+**Recurso:** /productos/:id/componentes
+**Status code:** 200 y 404
+**Descripción:** Obtiene todos los componentes de el producto identificado con el id que se le pase en el recurso. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
+**Ejemplo:**
+
+
+
+**Verbo:** GET
+**Recurso:** /fabricantes
+**Status code:** 200
+**Descripción:** Obtiene todos los fabricantes, en caso de que no haya fabricantes no devuelve nada. ??????????
+**Ejemplo:** 
+
+**Verbo:** GET
+**Recurso:** /fabricantes/:id
+**Status code:** 200 y 404
+**Descripción:** Obtiene el fabricante identificado con el id que se le pase en el recurso, en caso de que ese fabricante no se encuentre devuelve un mensaje de error. ??????????
+**Ejemplo:** 
+
+
+**Verbo:** POST
+**Recurso:** /fabricantes
+**Status code:** 201 y 400
+**Descripción:** Crea un fabricante, en caso de pasar mal algun dato..... ??????????
+**Ejemplo:**
+
+
+**Verbo:** PUT
+**Recurso:** /fabricantes/:id
+**Status code:** 200 y 404
+**Descripción:** Modifica los datos de el fabricante identificado con el id que se le pase en el recurso, en caso de que ese fabricante no se encuentre O se pase mal un dato... devuelve un mensaje de error. ?????
+**Ejemplo:** 
+
+
+**Verbo:** DELETE
+**Recurso:** /fabricantes/:id
+**Status code:** 200, 404 y 500
+**Descripción:** Borra el fabricante identificado con el id que se le pase en el recurso, en caso de que ese fabricante no se encuentre devuelve un mensaje de error. ?????
+**Ejemplo:** 
+
+
+**Verbo:** GET 
+**Recurso:** /fabricantes/:id/productos
+**Status code:** 200 y 404
+**Descripción:** Obtiene todos los productos de el fabricante identificado con el id que se le pase en el recurso. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
+**Ejemplo:**
+**_/fabricantes/1/productos_**
 
 Obtiene los datos del fabricante registrado con el id 1, con todos los productos que fabrica, incluyendo los atributos de cada producto y los componentes asociados a esos productos.
 
@@ -133,43 +198,47 @@ Obtiene los datos del fabricante registrado con el id 1, con todos los productos
 }
 ```
 
-Recurso: **_/productos/1/fabricantes_**
 
-Obtiene los datos del producto registrado con el id 1, con todos los fabricantes que lo producen, incluyendo los atributos de cada fabricante.
+**Verbo:** GET
+**Recurso:** /componentes
+**Status code:** 200
+**Descripción:** Obtiene todos los componentes, en caso de que no haya componentes no devuelve nada. ??????????
+**Ejemplo:** 
 
-```
-{
-    "id": 1,
-    "nombre": "Laptop X200",
-    "descripcion": "Una laptop de alto rendimiento",
-    "precio": 1200.99,
-    "pathImg": "/images/productos/laptop-x200.jpg",
-    "fabricantes": [
-        {
-            "id": 1,
-            "nombre": "TechCorp",
-            "direccion": "1234 Elm St, Ciudad",
-            "contacto": "+123456789",
-            "pathImgPerfil": "/images/fabricantes/techcorp.jpg"
-        },
-        {
-            "id": 2,
-            "nombre": "Innovatech",
-            "direccion": "4567 Oak Ave, Ciudad",
-            "contacto": "+987654321",
-            "pathImgPerfil": "/images/fabricantes/innovatech.jpg"
-        }
-    ]
-}
-```
+**Verbo:** GET
+**Recurso:** /componentes/:id
+**Status code:** 200 y 404
+**Descripción:** Obtiene el componente identificado con el id que se le pase en el recurso, en caso de que ese componente no se encuentre devuelve un mensaje de error. ??????????
+**Ejemplo:** 
 
-## Consideraciones Finales sobre la Entrega
 
-- El equipo debera entegar un repositorio de github con todas las instrucciones necesarias para correr la api. 
-- Deberán  detallar los commandos necesarios para la instalación y ejecución de la api.
-- Dentro del Readme.md deberá tener una imagen del diagrama entidad-relacion
-- El puerto de listener deberá ser configurable por variable de entorno
-- La entega debe soportar cambiar la configuración del motor de base de datos de forma simple en funcion de probar con distintos motores.
+**Verbo:** POST
+**Recurso:** /componentes
+**Status code:** 201 y 400
+**Descripción:** Crea un componente, en caso de pasar mal algun dato..... ??????????
+**Ejemplo:**
+
+
+**Verbo:** PUT
+**Recurso:** /componentes/:id
+**Status code:** 200 y 404
+**Descripción:** Modifica los datos de el componente identificado con el id que se le pase en el recurso, en caso de que ese componente no se encuentre O se pase mal un dato... devuelve un mensaje de error. ?????
+**Ejemplo:** 
+
+
+**Verbo:** DELETE
+**Recurso:** /componentes/:id
+**Status code:** 200, 404 y 500
+**Descripción:** Borra el componente identificado con el id que se le pase en el recurso, en caso de que ese componente no se encuentre devuelve un mensaje de error. ?????
+**Ejemplo:** 
+
+
+**Verbo:** GET  
+**Recurso:** /componentes/:id/productos
+**Status code:** 200 y 404
+**Descripción:** Obtiene todos los productos del componente identificado con el id que se le pase en el recurso. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
+**Ejemplo:**
+
 
 
 
