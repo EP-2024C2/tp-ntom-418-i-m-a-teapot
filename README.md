@@ -5,7 +5,9 @@
 ## Descripción del Proyecto
 
 Se ha desarrollado un sistema interno de gestión de productos para una empresa de manufactura. La empresa fabrica una amplia gama de productos tecnológicos que requieren componentes específicos y son producidos por múltiples fabricantes asociados.
+
 La problemática de la empresa por la que se decidió hacer este sistema es que el proceso de gestión de la información es manual y está descentralizado, lo que genera demoras y problemas en la producción. 
+
 Se decidió automatizar y centralizar estos datos mediante un sistema web eficiente que permita gestionar los productos, fabricantes y componentes de manera integrada.
 
 
@@ -13,21 +15,23 @@ Se decidió automatizar y centralizar estos datos mediante un sistema web eficie
 Se decidió implementar un modelo relacional y se utilizó el siguiente diagrama de entidad-relación (DER) para generar los modelos y las asociaciones en Sequelize para que la API pueda interactuar con la base de datos a través de los Modelos.
 
 ![DER](DER.png)
-
 ### Descripción del modelo DER
 - Un **Producto** puede tener muchos fabricantes, y un **Fabricante** puede fabricar muchos productos.
 - Un **Producto** puede tener muchos componentes, y un **Componente** puede formar parte de varios productos.
+
 
 
 ### Base de datos
 El sistema utiliza el motor de base de datos sqlite para realizar pruebas simples pero se pueden utilizar otros motores como MySql o Postgres.
 
 
-### Instrucciones necesarias para correr la API.
+
+## Instrucciones necesarias para correr la API.
 Instalar las dependencias utilizadas en la API. 
 Para esto hay que utilizar el comando: ```npm install```
 Esto instalará las dependencias: ``` express - joi - sequelize - sqlite3 ```
 Y luego utilizar el comando: ```npm start``` 
+
 
 
 
@@ -37,209 +41,454 @@ Y luego utilizar el comando: ```npm start```
 - El código está organizado en rutas, controllers y middleware utilizando la separación por recurso.
 
 
-### EndPoints
+### Endpoints
 - Todas las peticiones que se realicen a la API deben ser enviadas en **localHost** con el **puerto 3000** que se encuentra por defecto, o modificarlo por variable de entorno.
 
 Ejemplos de cada recurso de la API con las diferentes respuestas:
 
+
+
 **Verbo:** GET 
+
 **Recurso:** /productos
+
 **Status code:** 200
-**Descripción:** Obtiene todos los productos, en caso de que no haya productos no devuelve nada. ??????????
-**Ejemplo:** 
+
+**Descripción:** Obtiene todos los productos. En caso de que no haya productos devuelve un array vacío.
+
+**Ejemplos:** 
+
+*Sin productos - Status code 200*
+![GET PROD VACIO](./ejemplos/productos/getSinProductosCargados.jpg)
+
+
+*Todos los productos - Status code 200*
+![GET PROD cod200](./ejemplos/productos/getConProductosCargados.jpg)
+
 
 
 **Verbo:** GET 
+
 **Recurso:** /productos/:id
+
 **Status code:** 200 y 404
-**Descripción:** Obtiene el producto identificado con el id que se le pase en el recurso, en caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
-**Ejemplo:** 
+
+**Descripción:** Obtiene el producto identificado con el id que se le pase en el recurso. En caso de que ese producto no se encuentre devuelve un mensaje de error.
+
+**Ejemplos:** 
+
+*Status code 200*
+![GET PROD cod200](./ejemplos/productos/getIdExitoso.jpg)
+
+
+*Status code 404*
+![GET PROD cod404](./ejemplos/productos/getIdError.jpg)
+
+
 
 
 **Verbo:** POST 
+
 **Recurso:** /productos
+
 **Status code:** 201 y 400
-**Descripción:** Crea un producto, en caso de pasar mal algun dato..... ??????????
+
+**Descripción:** Crea un producto. En caso de pasar mal algún dato lanza un mensaje de error indicando cuál es el error.
+
 **Ejemplo:**
+
+*Status code 201*
+![POST PROD cod201](./ejemplos/productos/postProducto.jpg)
+
+
+*Status code 400*
+![POST PROD cod400](./ejemplos/productos/postProductoError.jpg)
+
+
 
 
 **Verbo:** PUT
+
 **Recurso:** /productos/:id
-**Status code:** 200 y 404
-**Descripción:** Modifica los datos de el producto identificado con el id que se le pase en el recurso, en caso de que ese producto no se encuentre O se pase mal un dato... devuelve un mensaje de error. ?????
+
+**Status code:** 200, 400 y 404
+
+**Descripción:** Modifica los datos del producto identificado con el id que se le pase en el recurso. En caso de que ese producto no se encuentre o se pase mal algún dato, devuelve un mensaje de error indicando cuál es el error.
+
 **Ejemplo:** 
+
+*Status code 200*
+![PUT PROD cod200](./ejemplos/productos/putProductoModificadoExitoso.jpg)
+
+
+*Status code 400*
+![PUT PROD cod400](./ejemplos/productos/putProductoModificadoError.jpg)
+
+
+*Status code 404*
+![PUT PROD cod404](./ejemplos/productos/putProductoModificadoQueNoExiste.jpg)
+
+
 
 
 **Verbo:** DELETE
+
 **Recurso:** /productos/:id
+
 **Status code:** 200, 404 y 500
-**Descripción:** Borra el producto que identificado con el id que se le pase en el recurso, en caso de que ese producto no se encuentre devuelve un mensaje de error. ?????
+
+**Descripción:** Borra el producto identificado con el id que se le pase en el recurso. En caso de que ese producto no se encuentre o no se pueda eliminar, devuelve un mensaje de error.
+
 **Ejemplo:** 
 
-
-**Verbo:** POST 
-**Recurso:** /productos/:id/fabricantes
-**Status code:** 201, 404 y 400
-**Descripción:** Crea la asociación del producto identificado con el id que se le pase en el recurso con 1 o N fabricantes. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
-**Ejemplo:** 
+*Status code 200*
+![DELETE PROD cod200](./ejemplos/productos/deleteProductoExitoso.jpg)
 
 
-**Verbo:** GET 
-**Recurso:** /productos/:id/fabricantes
-**Status code:** 200 y 404
-**Descripción:** Obtiene todos los fabricantes de el producto identificado con el id que se le pase en el recurso. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
-**Ejemplo:**
+*Status code 404*
+![DELETE PROD cod404](./ejemplos/productos/deleteProductoError.jpg)
 
 
-**Verbo:** POST 
-**Recurso:** /productos/:id/componentes
-**Status code:** 201, 404 y 400
-**Descripción:** Crea la asociación del producto identificado con el id que se le pase en el recurso, con 1 o N componentes. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
-**Ejemplo:** 
-
-**Verbo:** GET 
-**Recurso:** /productos/:id/componentes
-**Status code:** 200 y 404
-**Descripción:** Obtiene todos los componentes de el producto identificado con el id que se le pase en el recurso. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
-**Ejemplo:**
-
-
-
-**Verbo:** GET
-**Recurso:** /fabricantes
-**Status code:** 200
-**Descripción:** Obtiene todos los fabricantes, en caso de que no haya fabricantes no devuelve nada. ??????????
-**Ejemplo:** 
-
-**Verbo:** GET
-**Recurso:** /fabricantes/:id
-**Status code:** 200 y 404
-**Descripción:** Obtiene el fabricante identificado con el id que se le pase en el recurso, en caso de que ese fabricante no se encuentre devuelve un mensaje de error. ??????????
-**Ejemplo:** 
 
 
 **Verbo:** POST
-**Recurso:** /fabricantes
-**Status code:** 201 y 400
-**Descripción:** Crea un fabricante, en caso de pasar mal algun dato..... ??????????
+
+**Recurso:** /productos/:id/fabricantes
+
+**Status code:** 201, 404 y 400
+
+**Descripción:** Crea la asociación del producto identificado con el id que se le pase en el recurso con 1 o N fabricantes.
+
 **Ejemplo:**
 
-
-**Verbo:** PUT
-**Recurso:** /fabricantes/:id
-**Status code:** 200 y 404
-**Descripción:** Modifica los datos de el fabricante identificado con el id que se le pase en el recurso, en caso de que ese fabricante no se encuentre O se pase mal un dato... devuelve un mensaje de error. ?????
-**Ejemplo:** 
+*Status code 201*
+![POST PROD_RELACION cod201](./ejemplos/relacionFabricantes/postProductoConSusFabricantesExitoso.jpg)
 
 
-**Verbo:** DELETE
-**Recurso:** /fabricantes/:id
-**Status code:** 200, 404 y 500
-**Descripción:** Borra el fabricante identificado con el id que se le pase en el recurso, en caso de que ese fabricante no se encuentre devuelve un mensaje de error. ?????
-**Ejemplo:** 
+*Status code 404*
+![POST PROD_RELACION cod404](./ejemplos/relacionFabricantes/postProductoConSusFabricantes404.jpg)
+
+
+*Status code 400*
+![POST PROD_RELACION cod400](./ejemplos/relacionFabricantes/postProductoConSusFabricantes400.jpg)
+
 
 
 **Verbo:** GET 
+
+**Recurso:** /productos/:id/fabricantes
+
+**Status code:** 200 y 404
+
+**Descripción:** Obtiene todos los fabricantes del producto identificado con el id que se le pase en el recurso. 
+
+**Ejemplo:**
+
+*Status code 200*
+![GET PROD_RELACION cod200](./ejemplos/relacionFabricantes/getProductoConSusFabricantesExitoso.jpg)
+
+
+*Status code 404*
+![GET PROD_RELACION cod404](./ejemplos/relacionFabricantes/getProductoConSusFabricantesError.jpg)
+
+
+
+
+**Verbo:** POST 
+
+**Recurso:** /productos/:id/componentes
+
+**Status code:** 201, 404 y 400
+
+**Descripción:** Crea la asociación del producto identificado con el id que se le pase en el recurso, con 1 o N componentes. 
+
+**Ejemplo:** 
+
+*Status code 201*
+![POST PROD_RELACION cod201](./ejemplos/relacionComponentes/postProductoConSusComponentesExitoso.jpg)
+
+
+*Status code 404*
+![POST PROD_RELACION cod404](./ejemplos/relacionComponentes/postProductoConSusComponentes404.jpg)
+
+
+*Status code 400*
+![POST PROD_RELACION cod400](./ejemplos/relacionComponentes/postProductoConSusComponentes400.jpg)
+
+
+
+**Verbo:** GET
+
+**Recurso:** /productos/:id/componentes
+
+**Status code:** 200 y 404
+
+**Descripción:** Obtiene todos los componentes del producto identificado con el id que se le pase en el recurso.
+
+**Ejemplo:**
+
+*Status code 200*
+![GET PROD_RELACION cod200](./ejemplos/relacionComponentes/getProductoConSusComponentesExitoso.jpg)
+
+
+*Status code 404*
+![GET PROD_RELACION cod404](./ejemplos/relacionComponentes/getProductoConSusComponentesError.jpg)
+
+
+
+
+
+**Verbo:** GET
+
+**Recurso:** /fabricantes
+
+**Status code:** 200
+
+**Descripción:** Obtiene todos los fabricantes. En caso de que no haya fabricantes devuelve un array vacío.
+
+**Ejemplo:** 
+
+*Sin fabricantes - Status code 200*
+![GET FABR VACIO](./ejemplos/fabricantes/getSinFabricantesCargados.jpg)
+
+
+*Todos los fabricantes - Status code 200*
+![GET FABR cod200](./ejemplos/fabricantes/getConFabricantesCargados.jpg)
+
+
+
+**Verbo:** GET
+
+**Recurso:** /fabricantes/:id
+
+**Status code:** 200 y 404
+
+**Descripción:** Obtiene el fabricante identificado con el id que se le pase en el recurso. En caso de que ese fabricante no se encuentre devuelve un mensaje de error.
+
+**Ejemplo:** 
+
+*Status code 200*
+![GET FABR cod200](./ejemplos/fabricantes/getIdExitoso.jpg)
+
+
+*Status code 404*
+![GET FABR cod404](./ejemplos/fabricantes/getIdError.jpg)
+
+
+
+
+**Verbo:** POST
+
+**Recurso:** /fabricantes
+
+**Status code:** 201 y 400
+
+**Descripción:** Crea un fabricante. En caso de pasar mal algún dato lanza un mensaje de error indicando cuál es el error.
+
+**Ejemplo:**
+
+*Status code 201*
+![POST FABR cod201](./ejemplos/fabricantes/postFabricante.jpg)
+
+
+*Status code 400*
+![POST FABR cod400](./ejemplos/fabricantes/postFabricanteError.jpg)
+
+
+
+
+**Verbo:** PUT
+
+**Recurso:** /fabricantes/:id
+
+**Status code:** 200 y 404
+
+**Descripción:** Modifica los datos del fabricante identificado con el id que se le pase en el recurso. En caso de que ese fabricante no se encuentre o se pase mal algún dato, devuelve un mensaje de error indicando cuál es el error.
+
+**Ejemplo:** 
+
+*Status code 200*
+![PUT FABR cod200](./ejemplos/fabricantes/putFabricanteModificadoExitoso.jpg)
+
+
+*Status code 400*
+![PUT FABR cod400](./ejemplos/fabricantes/putFabricanteModificadoError.jpg)
+
+
+*Status code 404*
+![PUT FABR cod404](./ejemplos/fabricantes/putFabricanteModificadoQueNoExiste.jpg)
+
+
+
+
+**Verbo:** DELETE
+
+**Recurso:** /fabricantes/:id
+
+**Status code:** 200, 404 y 500
+
+**Descripción:** Borra el fabricante identificado con el id que se le pase en el recurso. En caso de que ese fabricante no se encuentre o no se pueda eliminar, devuelve un mensaje de error.
+
+**Ejemplo:** 
+*Status code 200*
+![DELETE FABR cod200](./ejemplos/fabricantes/deleteFabricanteExitoso.jpg)
+
+
+*Status code 404*
+![DELETE FABR cod404](./ejemplos/fabricantes/deleteFabricanteError.jpg)
+
+
+
+
+**Verbo:** GET
+
 **Recurso:** /fabricantes/:id/productos
+
 **Status code:** 200 y 404
-**Descripción:** Obtiene todos los productos de el fabricante identificado con el id que se le pase en el recurso. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
+
+**Descripción:** Obtiene todos los productos del fabricante identificado con el id que se le pase en el recurso. 
+
 **Ejemplo:**
-**_/fabricantes/1/productos_**
 
-Obtiene los datos del fabricante registrado con el id 1, con todos los productos que fabrica, incluyendo los atributos de cada producto y los componentes asociados a esos productos.
-
-```
-{
-    "id": 1,
-    "nombre": "TechCorp",
-    "direccion": "1234 Elm St, Ciudad",
-    "contacto": "+123456789",
-    "pathImgPerfil": "/images/fabricantes/techcorp.jpg",
-    "productos": [
-        {
-            "id": 1,
-            "nombre": "Laptop X200",
-            "descripcion": "Una laptop de alto rendimiento",
-            "precio": 1200.99,
-            "pathImg": "/images/productos/laptop-x200.jpg",
-            "componentes": [
-                {
-                    "id": 1,
-                    "nombre": "Procesador Intel i7",
-                    "descripcion": "Procesador de octava generación"
-                },
-                {
-                    "id": 2,
-                    "nombre": "SSD 1TB",
-                    "descripcion": "Disco sólido de 1TB de capacidad"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "nombre": "Smartphone S5",
-            "descripcion": "Teléfono inteligente con pantalla OLED",
-            "precio": 799.99,
-            "pathImg": "/images/productos/smartphone-s5.jpg",
-            "componentes": [
-                {
-                    "id": 3,
-                    "nombre": "Pantalla OLED 6.5 pulgadas",
-                    "descripcion": "Pantalla de alta definición"
-                },
-                {
-                    "id": 4,
-                    "nombre": "Batería 4000mAh",
-                    "descripcion": "Batería de larga duración"
-                }
-            ]
-        }
-    ]
-}
-```
+*Status code 200*
+![GET FABR_RELACION cod200](./ejemplos/relacionProductos/getFabricanteConSusProductosExitoso.jpg)
 
 
+*Status code 404*
+![GET FABR_RELACION cod404](./ejemplos/relacionProductos/getFabricanteConSusProductosError.jpg)
+
+
+
+
+---
 **Verbo:** GET
+
 **Recurso:** /componentes
+
 **Status code:** 200
-**Descripción:** Obtiene todos los componentes, en caso de que no haya componentes no devuelve nada. ??????????
-**Ejemplo:** 
+
+**Descripción:** Obtiene todos los componentes. En caso de que no haya componentes devuelve un array vacío.
+
+**Ejemplo:**
+
+*Sin componentes - Status code 200*
+![GET COMP VACIO](./ejemplos/componentes/getSinComponentesCargados.jpg)
+
+
+*Todos los componentes - Status code 200*
+![GET COMP cod200](./ejemplos/componentes/getConComponentesCargados.jpg)
+
+
 
 **Verbo:** GET
+
 **Recurso:** /componentes/:id
+
 **Status code:** 200 y 404
-**Descripción:** Obtiene el componente identificado con el id que se le pase en el recurso, en caso de que ese componente no se encuentre devuelve un mensaje de error. ??????????
+
+**Descripción:** Obtiene el componente identificado con el id que se le pase en el recurso. En caso de que ese componente no se encuentre devuelve un mensaje de error.
+
 **Ejemplo:** 
+
+*Status code 200*
+![GET COMP cod200](./ejemplos/componentes/getIdExitoso.jpg)
+
+
+*Status code 404*
+![GET COMP cod404](./ejemplos/componentes/getIdError.jpg)
+
+
 
 
 **Verbo:** POST
+
 **Recurso:** /componentes
+
 **Status code:** 201 y 400
-**Descripción:** Crea un componente, en caso de pasar mal algun dato..... ??????????
+
+**Descripción:** Crea un componente. En caso de pasar mal algún dato lanza un mensaje de error indicando cuál es el error.
+
 **Ejemplo:**
+
+*Status code 201*
+![POST COMP cod201](./ejemplos/componentes/postComponente.jpg)
+
+
+*Status code 400*
+![POST COMP cod400](./ejemplos/componentes/postComponenteError.jpg)
+
+
 
 
 **Verbo:** PUT
+
 **Recurso:** /componentes/:id
+
 **Status code:** 200 y 404
-**Descripción:** Modifica los datos de el componente identificado con el id que se le pase en el recurso, en caso de que ese componente no se encuentre O se pase mal un dato... devuelve un mensaje de error. ?????
+
+**Descripción:** Modifica los datos de el componente identificado con el id que se le pase en el recurso. En caso de que ese componente no se encuentre o se pase mal algún dato, devuelve un mensaje de error indicando cuál es el error.
+
 **Ejemplo:** 
+
+*Status code 200*
+![PUT COMP cod200](./ejemplos/componentes/putComponenteModificadoExitoso.jpg)
+
+
+*Status code 400*
+![PUT COMP cod400](./ejemplos/componentes/putComponenteModificadoError.jpg)
+
+
+*Status code 404*
+![PUT COMP cod404](./ejemplos/componentes/putComponenteModificadoQueNoExiste.jpg)
+
+
 
 
 **Verbo:** DELETE
+
 **Recurso:** /componentes/:id
+
 **Status code:** 200, 404 y 500
-**Descripción:** Borra el componente identificado con el id que se le pase en el recurso, en caso de que ese componente no se encuentre devuelve un mensaje de error. ?????
+
+**Descripción:** Borra el componente identificado con el id que se le pase en el recurso. En caso de que ese componente no se encuentre o no se pueda eliminar, devuelve un mensaje de error.
+
 **Ejemplo:** 
 
+![DELETE COMP cod200](./ejemplos/componentes/deleteComponenteExitoso.jpg)
 
-**Verbo:** GET  
+
+*Status code 404*
+![DELETE COMP cod404](./ejemplos/componentes/deleteComponenteError.jpg)
+
+
+
+
+**Verbo:** GET 
+
 **Recurso:** /componentes/:id/productos
+
 **Status code:** 200 y 404
-**Descripción:** Obtiene todos los productos del componente identificado con el id que se le pase en el recurso. ¿¿En caso de que ese producto no se encuentre devuelve un mensaje de error. ??????????
+
+**Descripción:** Obtiene todos los productos del componente identificado con el id que se le pase en el recurso.
+
 **Ejemplo:**
 
+*Status code 200*
+![GET COMP_RELACION cod200](./ejemplos/relacionProductos/getComponenteConSusProductosExitoso.jpg)
+
+
+*Status code 404*
+![GET COMP_RELACION cod404](./ejemplos/relacionProductos/getComponenteConSusProductosError.jpg)
 
 
 
 
+
+###Tip: Borrar un producto que está relacionado con otras tablas.
+**Verbo:** DELETE 
+
+**Recurso:** 
+
+**Status code:** 
+
+**Ejemplo:**
