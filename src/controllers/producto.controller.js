@@ -78,23 +78,47 @@ class ProductoController {
 
   async createComponenteByProducto(req, res) {
     const { id } = req.params;
+    const { body } = req; // Array de objetos con id
+
     const producto = await Producto.findByPk(id);
+
     try {
-      await producto.createComponente(req.body);
-      res.status(200).send(producto);
+      const componentes = await Promise.all(
+        body.map(async ({ id }) => {
+          return await Componente.findByPk(id);
+        })
+      );
+
+      await producto.addComponentes(componentes);
+
+      res.status(201).json({ message: "Componentes asociados al producto" });
     } catch (error) {
-      res.status(400).send({ message: error.message });
+      res
+        .status(500)
+        .json({ message: "Error al asociar los componentes.", error });
     }
   }
 
   async createFabricanteByProducto(req, res) {
     const { id } = req.params;
+    const { body } = req;
+
     const producto = await Producto.findByPk(id);
+
     try {
-      await producto.createFabricante(req.body);
-      res.status(200).send(producto);
+      const fabricantes = await Promise.all(
+        body.map(async ({ id }) => {
+          return await Fabricante.findByPk(id);
+        })
+      );
+
+      await producto.addFabricantes(fabricantes);
+
+      res.status(201).json({ message: "Fabricantes asociados al producto" });
     } catch (error) {
-      res.status(400).send({ message: error.message });
+      res
+        .status(500)
+        .json({ message: "Error al asociar los fabricantes.", error });
     }
   }
 }

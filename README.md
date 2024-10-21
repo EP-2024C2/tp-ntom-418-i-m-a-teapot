@@ -162,15 +162,15 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 201*
-![POST PROD_RELACION cod201](./ejemplos/relacionFabricantes/postProductoConSusFabricantesExitoso.jpg)
+![POST PROD_RELACION cod201](./ejemplos/productos/relacionFabricantes/postProductoConSusFabricantesExitoso.jpg)
 
 
 *Status code 404*
-![POST PROD_RELACION cod404](./ejemplos/relacionFabricantes/postProductoConSusFabricantes404.jpg)
+![POST PROD_RELACION cod404](./ejemplos/productos/relacionFabricantes/postProductoConSusFabricantes404.jpg)
 
 
 *Status code 400*
-![POST PROD_RELACION cod400](./ejemplos/relacionFabricantes/postProductoConSusFabricantes400.jpg)
+![POST PROD_RELACION cod400](./ejemplos/productos/relacionFabricantes/postProductoConSusFabricantes400.jpg)
 
 
 
@@ -185,11 +185,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 200*
-![GET PROD_RELACION cod200](./ejemplos/relacionFabricantes/getProductoConSusFabricantesExitoso.jpg)
+![GET PROD_RELACION cod200](./ejemplos/productos/relacionFabricantes/getProductoConSusFabricantesExitoso.jpg)
 
 
 *Status code 404*
-![GET PROD_RELACION cod404](./ejemplos/relacionFabricantes/getProductoConSusFabricantesError.jpg)
+![GET PROD_RELACION cod404](./ejemplos/productos/relacionFabricantes/getProductoConSusFabricantesError.jpg)
 
 
 
@@ -205,15 +205,15 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:** 
 
 *Status code 201*
-![POST PROD_RELACION cod201](./ejemplos/relacionComponentes/postProductoConSusComponentesExitoso.jpg)
+![POST PROD_RELACION cod201](./ejemplos/productos/relacionComponentes/postProductoConSusComponentesExitoso.jpg)
 
 
 *Status code 404*
-![POST PROD_RELACION cod404](./ejemplos/relacionComponentes/postProductoConSusComponentes404.jpg)
+![POST PROD_RELACION cod404](./ejemplos/productos/relacionComponentes/postProductoConSusComponentes404.jpg)
 
 
 *Status code 400*
-![POST PROD_RELACION cod400](./ejemplos/relacionComponentes/postProductoConSusComponentes400.jpg)
+![POST PROD_RELACION cod400](./ejemplos/productos/relacionComponentes/postProductoConSusComponentes400.jpg)
 
 
 
@@ -228,11 +228,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 200*
-![GET PROD_RELACION cod200](./ejemplos/relacionComponentes/getProductoConSusComponentesExitoso.jpg)
+![GET PROD_RELACION cod200](./ejemplos/productos/relacionComponentes/getProductoConSusComponentesExitoso.jpg)
 
 
 *Status code 404*
-![GET PROD_RELACION cod404](./ejemplos/relacionComponentes/getProductoConSusComponentesError.jpg)
+![GET PROD_RELACION cod404](./ejemplos/productos/relacionComponentes/getProductoConSusComponentesError.jpg)
 
 
 
@@ -351,11 +351,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 200*
-![GET FABR_RELACION cod200](./ejemplos/relacionProductos/getFabricanteConSusProductosExitoso.jpg)
+![GET FABR_RELACION cod200](./ejemplos/fabricantes/relacionProductos/getFabricanteConSusProductosExitoso.jpg)
 
 
 *Status code 404*
-![GET FABR_RELACION cod404](./ejemplos/relacionProductos/getFabricanteConSusProductosError.jpg)
+![GET FABR_RELACION cod404](./ejemplos/fabricantes/relacionProductos/getFabricanteConSusProductosError.jpg)
 
 
 
@@ -474,21 +474,8 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 200*
-![GET COMP_RELACION cod200](./ejemplos/relacionProductos/getComponenteConSusProductosExitoso.jpg)
+![GET COMP_RELACION cod200](./ejemplos/componentes/relacionProductos/getComponenteConSusProductosExitoso.jpg)
 
 
 *Status code 404*
-![GET COMP_RELACION cod404](./ejemplos/relacionProductos/getComponenteConSusProductosError.jpg)
-
-
-
-
-
-###Tip: Borrar un producto que está relacionado con otras tablas.
-**Verbo:** DELETE 
-
-**Recurso:** 
-
-**Status code:** 
-
-**Ejemplo:**
+![GET COMP_RELACION cod404](./ejemplos/componentes/relacionProductos/getComponenteConSusProductosError.jpg)
