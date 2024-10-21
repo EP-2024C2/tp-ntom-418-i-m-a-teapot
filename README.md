@@ -59,11 +59,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplos:** 
 
 *Sin productos - Status code 200*
-![GET PROD VACIO](./ejemplos/productos/getSinProductosCargados.jpg)
+![GET PROD VACIO](./ejemplos/productos/getSinProductosCargados.JPG)
 
 
 *Todos los productos - Status code 200*
-![GET PROD cod200](./ejemplos/productos/getConProductosCargados.jpg)
+![GET PROD cod200](./ejemplos/productos/getConProductosCargados.JPG)
 
 
 
@@ -78,11 +78,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplos:** 
 
 *Status code 200*
-![GET PROD cod200](./ejemplos/productos/getIdExitoso.jpg)
+![GET PROD cod200](./ejemplos/productos/getIdExitoso.JPG)
 
 
 *Status code 404*
-![GET PROD cod404](./ejemplos/productos/getIdError.jpg)
+![GET PROD cod404](./ejemplos/productos/getIdError.JPG)
 
 
 
@@ -98,11 +98,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 201*
-![POST PROD cod201](./ejemplos/productos/postProducto.jpg)
+![POST PROD cod201](./ejemplos/productos/postProducto.JPG)
 
 
 *Status code 400*
-![POST PROD cod400](./ejemplos/productos/postProductoError.jpg)
+![POST PROD cod400](./ejemplos/productos/postProductoError.JPG)
 
 
 
@@ -118,15 +118,15 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:** 
 
 *Status code 200*
-![PUT PROD cod200](./ejemplos/productos/putProductoModificadoExitoso.jpg)
+![PUT PROD cod200](./ejemplos/productos/putProductoModificadoExitoso.JPG)
 
 
 *Status code 400*
-![PUT PROD cod400](./ejemplos/productos/putProductoModificadoError.jpg)
+![PUT PROD cod400](./ejemplos/productos/putProductoModificadoError.JPG)
 
 
 *Status code 404*
-![PUT PROD cod404](./ejemplos/productos/putProductoModificadoQueNoExiste.jpg)
+![PUT PROD cod404](./ejemplos/productos/putProductoModificadoQueNoExiste.JPG)
 
 
 
@@ -142,11 +142,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:** 
 
 *Status code 200*
-![DELETE PROD cod200](./ejemplos/productos/deleteProductoExitoso.jpg)
+![DELETE PROD cod200](./ejemplos/productos/deleteProductoExitoso.JPG)
 
 
 *Status code 404*
-![DELETE PROD cod404](./ejemplos/productos/deleteProductoError.jpg)
+![DELETE PROD cod404](./ejemplos/productos/deleteProductoError.JPG)
 
 
 
@@ -185,7 +185,7 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 200*
-![GET PROD_RELACION cod200](./ejemplos/productos/relacionFabricantes/getProductoConSusFabricantesExitoso.jpg)
+![GET PROD_RELACION cod200](./ejemplos/productos/relacionFabricantes/getProductoConSusFabricantesExitoso.JPG)
 
 
 *Status code 404*
@@ -249,11 +249,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:** 
 
 *Sin fabricantes - Status code 200*
-![GET FABR VACIO](./ejemplos/fabricantes/getSinFabricantesCargados.jpg)
+![GET FABR VACIO](./ejemplos/fabricantes/getSinFabricantesCargados.JPG)
 
 
 *Todos los fabricantes - Status code 200*
-![GET FABR cod200](./ejemplos/fabricantes/getConFabricantesCargados.jpg)
+![GET FABR cod200](./ejemplos/fabricantes/getConFabricantesCargados.JPG)
 
 
 
@@ -268,11 +268,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:** 
 
 *Status code 200*
-![GET FABR cod200](./ejemplos/fabricantes/getIdExitoso.jpg)
+![GET FABR cod200](./ejemplos/fabricantes/getIdExitoso.JPG)
 
 
 *Status code 404*
-![GET FABR cod404](./ejemplos/fabricantes/getIdError.jpg)
+![GET FABR cod404](./ejemplos/fabricantes/getIdError.JPG)
 
 
 
@@ -288,11 +288,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 201*
-![POST FABR cod201](./ejemplos/fabricantes/postFabricante.jpg)
+![POST FABR cod201](./ejemplos/fabricantes/postFabricante.JPG)
 
 
 *Status code 400*
-![POST FABR cod400](./ejemplos/fabricantes/postFabricanteError.jpg)
+![POST FABR cod400](./ejemplos/fabricantes/postFabricanteError.JPG)
 
 
 
@@ -308,7 +308,7 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:** 
 
 *Status code 200*
-![PUT FABR cod200](./ejemplos/fabricantes/putFabricanteModificadoExitoso.jpg)
+![PUT FABR cod200](./ejemplos/fabricantes/putFabricanteModificadoExitoso.JPG)
 
 
 *Status code 400*
@@ -316,7 +316,7 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 
 *Status code 404*
-![PUT FABR cod404](./ejemplos/fabricantes/putFabricanteModificadoQueNoExiste.jpg)
+![PUT FABR cod404](./ejemplos/fabricantes/putFabricanteModificadoQueNoExiste.JPG)
 
 
 
@@ -331,11 +331,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 **Ejemplo:** 
 *Status code 200*
-![DELETE FABR cod200](./ejemplos/fabricantes/deleteFabricanteExitoso.jpg)
+![DELETE FABR cod200](./ejemplos/fabricantes/deleteFabricanteExitoso.JPG)
 
 
 *Status code 404*
-![DELETE FABR cod404](./ejemplos/fabricantes/deleteFabricanteError.jpg)
+![DELETE FABR cod404](./ejemplos/fabricantes/deleteFabricanteError.JPG)
 
 
 
@@ -351,7 +351,7 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 200*
-![GET FABR_RELACION cod200](./ejemplos/fabricantes/relacionProductos/getFabricanteConSusProductosExitoso.jpg)
+![GET FABR_RELACION cod200](./ejemplos/fabricantes/relacionProductos/getFabricanteConSusProductosExitoso.JPG)
 
 
 *Status code 404*
@@ -372,11 +372,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Sin componentes - Status code 200*
-![GET COMP VACIO](./ejemplos/componentes/getSinComponentesCargados.jpg)
+![GET COMP VACIO](./ejemplos/componentes/getSinComponentesCargados.JPG)
 
 
 *Todos los componentes - Status code 200*
-![GET COMP cod200](./ejemplos/componentes/getConComponentesCargados.jpg)
+![GET COMP cod200](./ejemplos/componentes/getConComponentesCargados.JPG)
 
 
 
@@ -391,11 +391,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:** 
 
 *Status code 200*
-![GET COMP cod200](./ejemplos/componentes/getIdExitoso.jpg)
+![GET COMP cod200](./ejemplos/componentes/getIdExitoso.JPG)
 
 
 *Status code 404*
-![GET COMP cod404](./ejemplos/componentes/getIdError.jpg)
+![GET COMP cod404](./ejemplos/componentes/getIdError.JPG)
 
 
 
@@ -411,11 +411,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:**
 
 *Status code 201*
-![POST COMP cod201](./ejemplos/componentes/postComponente.jpg)
+![POST COMP cod201](./ejemplos/componentes/postComponente.JPG)
 
 
 *Status code 400*
-![POST COMP cod400](./ejemplos/componentes/postComponenteError.jpg)
+![POST COMP cod400](./ejemplos/componentes/postComponenteError.JPG)
 
 
 
@@ -431,15 +431,15 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 **Ejemplo:** 
 
 *Status code 200*
-![PUT COMP cod200](./ejemplos/componentes/putComponenteModificadoExitoso.jpg)
+![PUT COMP cod200](./ejemplos/componentes/putComponenteModificadoExitoso.JPG)
 
 
 *Status code 400*
-![PUT COMP cod400](./ejemplos/componentes/putComponenteModificadoError.jpg)
+![PUT COMP cod400](./ejemplos/componentes/putComponenteModificadoError.JPG)
 
 
 *Status code 404*
-![PUT COMP cod404](./ejemplos/componentes/putComponenteModificadoQueNoExiste.jpg)
+![PUT COMP cod404](./ejemplos/componentes/putComponenteModificadoQueNoExiste.JPG)
 
 
 
@@ -454,11 +454,11 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 **Ejemplo:** 
 
-![DELETE COMP cod200](./ejemplos/componentes/deleteComponenteExitoso.jpg)
+![DELETE COMP cod200](./ejemplos/componentes/deleteComponenteExitoso.JPG)
 
 
 *Status code 404*
-![DELETE COMP cod404](./ejemplos/componentes/deleteComponenteError.jpg)
+![DELETE COMP cod404](./ejemplos/componentes/deleteComponenteError.JPG)
 
 
 
