@@ -236,8 +236,7 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 
 
-
-
+---
 **Verbo:** GET
 
 **Recurso:** /fabricantes
@@ -276,7 +275,6 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 
 
-
 **Verbo:** POST
 
 **Recurso:** /fabricantes
@@ -293,7 +291,6 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 *Status code 400*
 ![POST FABR cod400](./ejemplos/fabricantes/postFabricanteError.JPG)
-
 
 
 
@@ -320,7 +317,6 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 
 
-
 **Verbo:** DELETE
 
 **Recurso:** /fabricantes/:id
@@ -336,7 +332,6 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 *Status code 404*
 ![DELETE FABR cod404](./ejemplos/fabricantes/deleteFabricanteError.JPG)
-
 
 
 
@@ -356,7 +351,6 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 *Status code 404*
 ![GET FABR_RELACION cod404](./ejemplos/fabricantes/relacionProductos/getFabricanteConSusProductosError.jpg)
-
 
 
 
@@ -454,6 +448,7 @@ Ejemplos de cada recurso de la API con las diferentes respuestas:
 
 **Ejemplo:** 
 
+*Status code 200*
 ![DELETE COMP cod200](./ejemplos/componentes/deleteComponenteExitoso.JPG)
 
 
